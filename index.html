@@ -39,6 +39,11 @@
             emailjs.init("3NUL5hn7jii_g5Llj");
         })();
     </script>
+    <style>
+      #succ_msg{
+        display: none;
+      }
+    </style>
 </head>
 
 <body>
@@ -485,8 +490,11 @@
                 <div class="error-message"></div>
                 <div class="sent-message">Your message has been sent. Thank you!</div>
               </div>
-              <div class="text-center"><button type="button" onclick="sendmail()">Send Message</button></div>
+              <div class="text-center"><button type="button" onclick="sendmail()" class="btn btn-primary">Send Message</button></div>
             </form>
+            <div class="alert alert-primary mt-1" id="succ_msg" role="alert">
+              Message Sent successfully
+            </div>
 
           </div>
 
@@ -563,7 +571,11 @@
         document.getElementById("msg").value = "";
         document.getElementById("email").value = "";
         document.getElementById("name").value = "";
-       
+        document.getElementById("succ_msg").style.display = "block";
+
+      $(document).ready(function () {
+          $("#succ_msg").fadeOut(10000);
+        });
       });
   }
 }
